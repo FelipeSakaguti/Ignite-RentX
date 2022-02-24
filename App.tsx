@@ -14,8 +14,7 @@ import {
   Inter_500Medium
 } from '@expo-google-fonts/inter'
 
-import { Home } from './src/screens/Home';
-import { SchedulingComplete } from './src/screens/SchedulingComplete';
+import { Routes } from './src/routes';
 import theme from './src/styles/theme';
 
 export default function App() {
@@ -34,7 +33,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme} >
-      <SchedulingComplete />
+      <Routes />
     </ThemeProvider>
   );
 }

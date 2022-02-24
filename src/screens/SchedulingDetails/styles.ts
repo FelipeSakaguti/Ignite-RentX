@@ -170,5 +170,5 @@ export const RentalPriceTotal = styled.Text`
     font-family: ${({ theme }) => theme.fonts.secondary_500};
     color: ${({ theme }) => theme.colors.success};
     font-size: ${RFValue(24)}px;
-    height: 40px;
+    height: ${RFValue(35)}px;;
 `;

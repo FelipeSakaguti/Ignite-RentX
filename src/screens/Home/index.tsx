@@ -34,7 +34,6 @@ export function Home() {
     }
 
     function handleCarDetails() {
-        console.log('aaa')
         navigation.navigate('CarDetails')
     }
 
@@ -61,7 +60,7 @@ export function Home() {
                 data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
                 keyExtractor={item => String(item)}
                 renderItem={({ item }) =>
-                    <Car data={carData} onPress={() => { console.log('aaaa') }} />
+                    <Car data={carData} onPress={handleCarDetails} />
                 }
             />
 

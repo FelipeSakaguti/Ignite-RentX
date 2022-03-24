@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { TouchableOpacityProps } from 'react-native';
+
 import {
     Container, Title
 } from './styles';
 
-interface Props {
+interface Props extends TouchableOpacityProps {
     title: string;
     color?: string;
 }
@@ -15,7 +17,7 @@ export function Button({
     ...rest
 }: Props) {
     return (
-        <Container {...rest} color={color} >
+        <Container color={color} {...rest} >
             <Title>{title}</Title>
         </Container>
     )

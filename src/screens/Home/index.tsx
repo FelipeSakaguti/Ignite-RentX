@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from 'styled-components';
 
 import { StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize'
@@ -17,7 +19,8 @@ import {
     Header,
     HeaderContent,
     TotalCars,
-    CarList
+    CarList,
+    MyCarsButton
 } from './styles';
 
 type Props = NativeStackScreenProps<any, 'Home'>;
@@ -26,26 +29,21 @@ export function Home() {
     const [cars, setCars] = useState<CarDTO[]>([]);
     const [loading, setLoading] = useState(true);
     const navigation = useNavigation<any>();
+    const theme = useTheme();
 
-    const carData = {
-        brand: 'audi',
-        name: 'RS 5 Coupé',
-        rent: {
-            period: 'ao dia',
-            price: 120,
-        },
-        thumbnail: 'https://production.autoforce.com/uploads/version/profile_image/3188/model_main_comprar-tiptronic_87272c1ff1.png',
+    function handleCarDetails(car: CarDTO) {
+        navigation.navigate('CarDetails', { car });
     }
 
-    function handleCarDetails() {
-        navigation.navigate('CarDetails')
+    function handleMyCars() {
+        navigation.navigate('MyCars');
     }
 
     useEffect(() => {
         async function fetchCars() {
             try {
                 const response = await api.get('/cars');
-                console.log(response.data)
+                // console.log(response.data)
                 setCars(response.data);
             } catch (error) {
                 console.log(error);
@@ -83,10 +81,19 @@ export function Home() {
                     data={cars}
                     keyExtractor={item => String(item.id)}
                     renderItem={({ item }) =>
-                        <Car data={item} onPress={handleCarDetails} />
+                        <Car data={item} onPress={() => handleCarDetails(item)} />
                     }
                 />
             }
+
+            <MyCarsButton onPress={handleMyCars}>
+                <Ionicons
+                    name="ios-car-sport"
+                    size={32}
+                    color={theme.colors.shape}
+                />
+            </MyCarsButton>
+
         </Container>
     )
 }

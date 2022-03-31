@@ -78,7 +78,7 @@ export const Price = styled.Text`
     font-size: ${RFValue(25)}px;
 `;
 
-export const Acessories = styled.View`
+export const Accessories = styled.View`
     width: 100%;
     
     flex-direction: row;
@@ -147,10 +147,6 @@ export const RentalPriceLabel = styled.Text`
     font-size: ${RFValue(10)}px;
 
     text-transform: uppercase;
-`;
-
-export const RentalPriceContainer = styled.View`
-    flex-direction: column;
 `;
 
 export const RentalPriceDetails = styled.View`

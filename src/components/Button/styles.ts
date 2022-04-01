@@ -11,6 +11,7 @@ export const Container = styled.TouchableOpacity <ButtonProps>`
     width: 100%;
 
     padding: 19px;
+    height: ${RFValue(55)}px;
     align-items: center;
     justify-content: center;
     background-color: ${({ color, theme }) => color ? color : theme.colors.main};

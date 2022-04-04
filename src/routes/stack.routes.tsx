@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
+import { Splash } from '../screens/Splash';
 import { Home } from '../screens/Home';
 import { CarDetails } from '../screens/CarDetails';
 import { Scheduling } from '../screens/Scheduling';
@@ -14,10 +15,15 @@ const { Navigator, Screen } = createNativeStackNavigator();
 export function StackRoutes() {
     return (
         <Navigator
+            initialRouteName='Splash'
             screenOptions={{
                 headerShown: false
             }}
         >
+            <Screen
+                name="Splash"
+                component={Splash}
+            />
             <Screen
                 name="Home"
                 component={Home}

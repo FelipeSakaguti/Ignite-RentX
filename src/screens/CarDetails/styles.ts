@@ -22,6 +22,7 @@ export const Header = styled.View`
     margin-left: 24px;
 `;
 
+
 export const Details = styled.View`
     width: 100%;
 

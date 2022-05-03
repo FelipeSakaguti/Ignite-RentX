@@ -37,11 +37,11 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme} >
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <AppProvider>
+      <AppProvider>
+        <GestureHandlerRootView style={{ flex: 1 }}>
           <Routes />
-        </AppProvider>
-      </GestureHandlerRootView>
+        </GestureHandlerRootView>
+      </AppProvider>
     </ThemeProvider>
   );
 }

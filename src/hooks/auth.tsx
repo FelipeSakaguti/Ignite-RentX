@@ -43,7 +43,10 @@ function AuthProvider({ children }: AuthProviderProps) {
             email,
             password
         })
+
         const { token, user } = response.data;
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        setData({ token, user });
     };
 
     return (

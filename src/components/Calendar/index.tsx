@@ -64,7 +64,6 @@ function Calendar({ markedDates, onDayPress }: CalendarProps) {
 
 export {
     Calendar,
-    CalendarProps,
     DayProps,
     generateInterval
 }

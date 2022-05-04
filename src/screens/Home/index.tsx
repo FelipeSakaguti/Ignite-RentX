@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import { StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize'
@@ -26,28 +26,28 @@ export function Home() {
     const navigation = useNavigation<any>();
 
     useEffect(() => {
+        let isMounted = true;
+
         async function fetchCars() {
             try {
                 const response = await api.get('/cars');
-                // console.log(response.data)
-                setCars(response.data);
+                if (isMounted) {
+                    setCars(response.data);
+                }
             } catch (error) {
                 console.log(error);
             } finally {
-                setLoading(false);
+                if (isMounted) {
+                    setLoading(false);
+                }
             }
         }
 
         fetchCars()
+        return () => {
+            isMounted = false;
+        };
     }, []);
-
-    // useFocusEffect(() => {
-    //     const backHandler = BackHandler.addEventListener(
-    //         'hardwareBackPress',
-    //         () => true
-    //     );
-    //     return () => backHandler.remove();
-    // });
 
     function handleCarDetails(car: CarDTO) {
         navigation.navigate('CarDetails', { car });

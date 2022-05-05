@@ -45,7 +45,6 @@ export function SignIn() {
             });
 
             await schema.validate({ email, password });
-            Alert.alert("deu certo esse paranaue");
 
             signIn({ email, password });
 
